@@ -6,10 +6,13 @@ import { useState } from "react";
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  // const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if (!email.trim()) {
+    //   alert("Please Enter Email");
+    //   return;
+    // }
     const mail = "felicia.hartono@codeboxx.biz";
     try {
       const res = await axios.get(
@@ -22,17 +25,15 @@ export default function LoginScreen({ navigation }) {
           },
         }
       );
-      console.log("data 1 ", res.data);
-      console.log("Allooo");
+
       if (res.data) {
         navigation.replace("Home");
       } else {
-        console.warn("Incorrect Email!");
+        alert("Incorrect Email!");
       }
       setEmail("");
-      // setSuccess(true);
     } catch (err) {
-      setErrMsg("Login Failed!");
+      setErrMsg("Login Failed!", err);
     }
   };
 
