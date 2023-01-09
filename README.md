@@ -7,29 +7,38 @@ This week, we create an app using React Native. For that, we made three screens.
 - Create an app using expo
 
 `npm i -g expo-cli`
+
 `npx create-expo-app my-app`
 
 - To navigate between sreens
 
 `npm install @react-navigation/native @react-navigation/native-stack`
+
 `expo install react-native-screens react-native-safe-area-context`
 
 - To run the app
+
   We can use our phone to run the app. First, install "Expo go" in the phone (App Store or Play Store)
 
   Use ngrok for the connection with the API in localhost. Download ngrok, extract the folder, launch ngrok.exe then get the URL
 
 ![ngrok](https://user-images.githubusercontent.com/113941321/211241657-01d682ae-4460-41bd-8297-e9628ee987f7.png)
 
-- In terminal
+- In terminals
+
   Run the app (in VS Code using bash terminal)
+
   `npx expo start`
 
-Run the api (in VS using cmd terminal)
-`dotnet run --urls=http://0.0.0.0:5047`
+  Run the api (in VS using cmd terminal)
 
-Run ngrok in terminal avec launch ngrok.exe
-`ngrok http 5047`
+  `dotnet run --urls=http://0.0.0.0:5047`
+
+  Run ngrok in terminal avec launch ngrok.exe
+
+  `ngrok http 5047`
+
+## Result
 
 Login screen
 
