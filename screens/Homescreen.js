@@ -1,23 +1,21 @@
 import React from "react";
 import {
   SafeAreaView,
-  View,
   FlatList,
   StyleSheet,
   Text,
-  StatusBar,
-  Button,
-  Alert,
   Image,
   TouchableOpacity,
 } from "react-native";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Button } from "@rneui/themed";
 
+// Call API to get elevator not operating
 const getElevators = async (setElevators) => {
   try {
     const res = await axios.get(
-      "https://71ad-209-172-20-75.ngrok.io/api/Elevator/GetAllElevatorStatusNotOperation",
+      "https://3e86-209-172-20-75.ngrok.io/api/Elevator/GetAllElevatorStatusNotOperation",
       {
         headers: { "Content-Type": "application/json" },
       }
@@ -29,7 +27,6 @@ const getElevators = async (setElevators) => {
 };
 
 const onElevatorPress = (elevator, navigation) => {
-  console.log("onElevatorPress elevator:", elevator);
   navigation.navigate("Elevator", {
     id: elevator.id,
     status: elevator.status,
@@ -39,27 +36,6 @@ const onElevatorPress = (elevator, navigation) => {
   });
 };
 
-// const Item = ({ elevator, navigation }) => {
-//   console.log("elevator is:", elevator.id);
-
-//   return (
-//     // <Touchable onPress={() => onElevatorPress(elevator, navigation)}>
-//     <Text
-//       onPress={() => onElevatorPress(elevator, navigation)}
-//       style={styles.item}
-//     >
-//       Elevator {elevator.id}
-//     </Text>
-//     // </Touchable>
-
-//     // <Button
-//     //   style={styles.item}
-//     //   title={elevator.id.toString()}
-//     //   onPress={() => onElevatorPress(elevator, navigation)}
-//     // />
-//   );
-// };
-
 const Item = ({ elevator, navigation }) => (
   <TouchableOpacity
     onPress={() => onElevatorPress(elevator, navigation)}
@@ -67,14 +43,17 @@ const Item = ({ elevator, navigation }) => (
   >
     <Text style={styles.title}>
       {" "}
-      Elevator {elevator.id} :: {elevator.buildingType}{" "}
+      Elevator {elevator.id} --- {elevator.buildingType}
     </Text>
   </TouchableOpacity>
 );
 
+const logout = (navigation) => {
+  navigation.replace("Login");
+};
+
 const HomeScreen = ({ navigation }) => {
   const [elevators, setElevators] = useState(null);
-  // console.log("ascenseur id ve? : ", elevators);
 
   useEffect(() => {
     const focusHandler = navigation.addListener("focus", () => {
@@ -87,11 +66,6 @@ const HomeScreen = ({ navigation }) => {
     <Item elevator={item} navigation={navigation} />
   );
 
-  // console.log("renderItem", renderItem);
-  const logout = () => {
-    navigation.replace("Login");
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <Image source={require("../assets/R2.png")} style={styles.image} />
@@ -101,8 +75,21 @@ const HomeScreen = ({ navigation }) => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
-
-      <Button color="red" title={"Logout"} onPress={logout} />
+      <Button
+        title="LOG OUT"
+        buttonStyle={{
+          backgroundColor: "rgba(199, 43, 98, 1)",
+          borderRadius: 5,
+        }}
+        titleStyle={{ fontWeight: "bold", fontSize: 23 }}
+        containerStyle={{
+          marginHorizontal: "25%",
+          height: 50,
+          width: 200,
+          marginVertical: 10,
+        }}
+        onPress={() => logout(navigation)}
+      />
     </SafeAreaView>
   );
 };
@@ -110,9 +97,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-    // justifyContent: "center",
-    // alignItems: "center",
+    backgroundColor: "#022E7A",
   },
   item: {
     backgroundColor: "steelblue",
@@ -122,11 +107,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
+    color: "white",
   },
   image: {
     width: "50%",
     height: 70,
-    marginBottom: 30,
+    marginVertical: 30,
     marginLeft: "25%",
   },
 });

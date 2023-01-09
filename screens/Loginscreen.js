@@ -1,31 +1,32 @@
 import React from "react";
-import { Button, View, StyleSheet, TextInput, Image } from "react-native";
+import { View, StyleSheet, TextInput, Image } from "react-native";
 import axios from "axios";
 import { useState } from "react";
+import { Button } from "@rneui/themed";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
-  const [errMsg, setErrMsg] = useState("");
 
+  // Call API to verify if email exists in the database
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!email.trim()) {
-    //   alert("Please Enter Email");
-    //   return;
-    // }
-    const mail = "felicia.hartono@codeboxx.biz";
+    if (!email.trim()) {
+      alert("Please Enter an Email");
+      return;
+    }
+
     try {
       const res = await axios.get(
-        "https://71ad-209-172-20-75.ngrok.io/api/Employee/ValidateEmail",
+        "https://3e86-209-172-20-75.ngrok.io/api/Employee/ValidateEmail",
 
         {
           headers: { "Content-Type": "application/json" },
           params: {
-            inputemail: mail,
+            inputemail: email,
           },
         }
       );
-
+      // If res.data true (email exists), go to home page
       if (res.data) {
         navigation.replace("Home");
       } else {
@@ -48,9 +49,18 @@ export default function LoginScreen({ navigation }) {
       />
 
       <Button
-        title={"Login"}
-        // style={styles.input}
-        // onPress={() => navigation.navigate("Home")}
+        title="LOG IN"
+        buttonStyle={{
+          backgroundColor: "rgba(199, 43, 98, 1)",
+          borderRadius: 5,
+        }}
+        titleStyle={{ fontWeight: "bold", fontSize: 23 }}
+        containerStyle={{
+          marginHorizontal: 50,
+          height: 50,
+          width: 250,
+          marginVertical: 10,
+        }}
         onPress={handleSubmit}
       />
     </View>
@@ -62,19 +72,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#022E7A",
   },
   input: {
-    width: 200,
+    width: 250,
     height: 44,
     padding: 10,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "transparent",
     marginBottom: 20,
+    backgroundColor: "white",
   },
   image: {
     width: "50%",
     height: 70,
-    marginBottom: 30,
+    marginBottom: 50,
   },
 });

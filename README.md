@@ -1,28 +1,44 @@
-> Why do I have a folder named ".expo" in my project?
-> The ".expo" folder is created when an Expo project is started using "expo start" command.
-> What do the files contain?
+# Rocket-Elevators-Mobile-React-Native
 
-- "devices.json": contains information about devices that have recently opened this project. This is used to populate the "Development sessions" list in your development builds.
-- "settings.json": contains the server configuration that is used to serve the application manifest.
-  > Should I commit the ".expo" folder?
-  > No, you should not share the ".expo" folder. It does not contain any information that is relevant for other developers working on the project, it is specific to your machine.
-  > Upon project creation, the ".expo" folder is already added to your ".gitignore" file.
+This week, we create an app using React Native. For that, we made three screens. First screen is the login screen, an employee enter his email to log. After login, the home screen where elevators that are not online be displayed. When the user select an elevator, the next page will be displayed with the details of the elevator. In that page, we can change the status to online.
 
-MANOMBOKA ETO NY README
-install packages
-créer un app à partir expo
-npm i -g expo-cli
-npx create-expo-app my-app
+## Installation and running the test
 
-pour naviguer
-npm install @react-navigation/native @react-navigation/native-stack
-expo install react-native-screens react-native-safe-area-context
+- Create an app using expo
 
-run l'app
-npx expo start
+`npm i -g expo-cli`
+`npx create-expo-app my-app`
 
-run l'api
-dotnet run --urls=http://0.0.0.0:5047
+- To navigate between sreens
 
-run ngrok
-ngrok http 5047
+`npm install @react-navigation/native @react-navigation/native-stack`
+`expo install react-native-screens react-native-safe-area-context`
+
+- To run the app
+  We can use our phone to run the app. First, install "Expo go" in the phone (App Store or Play Store)
+
+  Use ngrok for the connection with the API in localhost. Download ngrok, extract the folder, launch ngrok.exe then get the URL
+
+![ngrok](https://user-images.githubusercontent.com/113941321/211241657-01d682ae-4460-41bd-8297-e9628ee987f7.png)
+
+- In terminal
+  Run the app (in VS Code using bash terminal)
+  `npx expo start`
+
+Run the api (in VS using cmd terminal)
+`dotnet run --urls=http://0.0.0.0:5047`
+
+Run ngrok in terminal avec launch ngrok.exe
+`ngrok http 5047`
+
+Login screen
+
+![loginscreen](https://user-images.githubusercontent.com/113941321/211241179-f140861d-1b8e-4f3a-a430-82372ff3ea97.png)
+
+Home screen
+
+![homescreen](https://user-images.githubusercontent.com/113941321/211241250-014c5d3c-6590-4767-a709-c791732c92b0.png)
+
+Elevator status screen
+
+![statusscreen](https://user-images.githubusercontent.com/113941321/211241296-ed33ba9d-d5f6-490d-8f22-f722f58e3307.png)
