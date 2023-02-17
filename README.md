@@ -34,9 +34,19 @@ This week, we create an app using React Native. For that, we made three screens.
 
   `dotnet run --urls=http://0.0.0.0:5047`
 
-  Run ngrok in terminal avec launch ngrok.exe
+  Run ngrok in terminal with launch ngrok.exe
 
   `ngrok http 5047`
+
+## Useful links
+
+- API link repository (with the endpoints)
+
+`https://github.com/gabrielleravelo/Rocket_Elevators_Foundation_RestAPI.git`
+
+- Main site repository (creation and initial filling of the database)
+
+`https://github.com/gabrielleravelo/Rocket-Elevators-Foundation.git`
 
 ## Result
 
