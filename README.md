@@ -1,6 +1,6 @@
 # Rocket-Elevators-Mobile-React-Native
 
-This week, we create an app using React Native. For that, we made three screens. First screen is the login screen, an employee enter his email to log. After login, the home screen where elevators that are not online be displayed. When the user select an elevator, the next page will be displayed with the details of the elevator. In that page, we can change the status to online.
+This week, we created an app using React Native. For that, we made three screens. First screen is the login screen, an employee enter his email to log. After login, the home screen where elevators that are not online be displayed. When the user select an elevator, the next page will be displayed with the details of the elevator. In that page, we can change the status to online.
 
 ## Installation and running the test
 
@@ -10,7 +10,7 @@ This week, we create an app using React Native. For that, we made three screens.
 
 `npx create-expo-app my-app`
 
-- To navigate between sreens
+- To navigate between screens
 
 `npm install @react-navigation/native @react-navigation/native-stack`
 
